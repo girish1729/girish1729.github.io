@@ -45,7 +45,7 @@ src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Gumroad creations
 
-[This](https://gumroad.com/girishv) is my Gumroad page where I publish
+[This](https://girish1729.gumroad.com/) is my Gumroad page where I publish
 my ebooks and other digital assets.
 
 ## Linkedin 
