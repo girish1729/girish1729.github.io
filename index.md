@@ -50,7 +50,7 @@ my ebooks and other digital assets.
 
 ## Linkedin 
 
-[Linkedin](https://linkedin.com/in/girishvenkatachalam) is also a place
+[Linkedin](https://linkedin.com/in/girishvenkatachalam){:target="_blank"} is also a place
 where my projects are listed(mostly commercial).
 
 ## Other
@@ -64,7 +64,7 @@ I am old OpenBSD fan and the thrill still continues. I used to maintain
 ports in OpenBSD and I am also into Linux.
 
 I am a command line geek and write text mails in [vim
-editor](https://www.vim.org) and use [mutt](https://www.mutt.org) for my
+editor](https://www.vim.org) and use [mutt](http://www.mutt.org) for my
 email traffic.
 
 No , I don't use Gmail. My email server is hosted in
