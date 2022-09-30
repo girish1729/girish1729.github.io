@@ -42,6 +42,13 @@ src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="girishV" data-color="#FFDD00" data-emoji=""  data-font="Arial" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
 
+## Substack newsletter
+
+[This](https://girishvenkatachalam.substack.com) is my substack page for
+subscribing to my newsletter.
+
+I want to own my audience as opposed to rent , but you never meet folks
+in your house. You always go out and meet them at a public place...
 
 ## Gumroad creations
 
@@ -50,13 +57,8 @@ my ebooks and other digital assets.
 
 ## Linkedin 
 
-[Linkedin](https://linkedin.com/in/girishvenkatachalam){:target="_blank"} is also a place
+[Linkedin](https://linkedin.com/in/girishvenkatachalam) is also a place
 where my projects are listed(mostly commercial).
-
-## Other
-
-Being a digital nomad I really have plenty of time or no time at all. I
-have never worked in a regular job since May 18, 2005.
 
 ## Tech stack
 
@@ -71,3 +73,9 @@ No , I don't use Gmail. My email server is hosted in
 [Hetzner](https://www.hetzner.com)
 
 As such I am an easy going guy with a geek mindset.
+
+## Other
+
+Being a digital nomad I really have plenty of time or no time at all. I
+have never worked in a regular job since May 18, 2005.
+
