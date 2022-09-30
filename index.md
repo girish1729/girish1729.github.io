@@ -43,5 +43,19 @@ src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="girishV" data-color="#FFDD00" data-emoji=""  data-font="Arial" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
 
 
+## Gumroad creations
+
+[This](https://gumroad.com/girishv) is my Gumroad page where I publish
+my ebooks and other digital assets.
+
+## Linkedin 
+
+[Linkedin](https://linkedin.com/in/girishvenkatachalam) is also a place
+where my projects are listed(mostly commercial).
+
+## Other
+
+Being a digital nomad I really have plenty of time or no time at all. I
+have never worked in a regular job since May 18, 2005.
 
 
