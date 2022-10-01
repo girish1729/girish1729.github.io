@@ -44,7 +44,7 @@ src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Substack newsletter
 
-[This](https://girishvenkatachalam.substack.com) is my substack page for
+[This](https://girish1729.substack.com) is my substack page for
 subscribing to my newsletter.
 
 I want to own my audience as opposed to rent , but you never meet folks
