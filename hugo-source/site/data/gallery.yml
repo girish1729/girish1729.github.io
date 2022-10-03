@@ -1,0 +1,10 @@
+---
+title : "Some important pictures"
+subtitle: >
+        Important pictures and screenshots
+galleryImage: 
+ - image: "images/gallery/liveusb-openbsd.webp"
+ - image: "images/gallery/github.webp"
+ - image: "images/gallery/linkedin.webp"
+ - image: "images/gallery/gumroad.webp"
+---

@@ -1,0 +1,45 @@
+<section class="footer">
+  <div class="container">
+
+    <div class="row justify-content-between">
+        <div class="footer-logo">
+          {{ .Site.Params.footerDescription}}
+        </div>
+    </div>
+
+<hr/>
+    <div class="row justify-content-between">
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="girishV" data-color="#FFDD00" data-emoji=""  data-font="Arial" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
+<a href="https://twitter.com/girish1729?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @girish1729</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+   </div>
+
+   <div class="footer-copyright-text">
+          <p> {{ replace .Site.Params.copyright "{year}" now.Year | safeHTML }} </p>
+    </div>
+
+  </div>
+</section>
+
+
+{{ "<!-- Non Critical CSS -->" | safeHTML }}
+{{$style :=  resources.Get "scss/non-critical.scss" | resources.ToCSS | resources.Minify }}
+<link href="{{ $style.Permalink }}" rel="stylesheet" />
+<script src="https://maps.googleapis.com/maps/api/js?key={{ .Site.Params.APIkey }}&libraries=geometry">
+</script>
+{{ "<!-- VENDOR JS -->" | safeHTML }}
+<script src="{{"vendor/jQuery/jquery.min.js" | absURL }}"></script>
+<script src="{{"vendor/bootstrap/bootstrap.min.js" | absURL }}"></script>
+<script src="{{"vendor/slick/slick.min.js" | absURL}}"></script>
+<script src="{{"vendor/aos/aos.js" | absURL}}"></script>
+<script src="{{"vendor/match-height/match-height.js" | absURL}}"></script>
+<script src="{{"vendor/magnific-popup/magnific-popup.min.js" | absURL}}"></script>
+<script src="{{"vendor/g-map/gmap.js" | absURL}}"></script>
+<!-- {{ $formhandler := resources.Get "js/formhandler.js" | minify}} 
+<script src="{{ $formhandler.Permalink}}"></script> -->
+{{ $script := resources.Get "js/script.js" | minify}} 
+<script src="{{ $script.Permalink}}"></script>
+
+

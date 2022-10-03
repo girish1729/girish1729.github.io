@@ -1,0 +1,23 @@
+{{ with .Site.Data.home}}
+<section class="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>{{ .title}}</h1>
+          <h3>{{.subTitle}}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="home-content">
+            {{.description | markdownify }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{{end}}

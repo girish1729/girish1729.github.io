@@ -1,0 +1,25 @@
+---
+enable: true
+title: "Frequently Asked Questions"
+faq:
+  - question: "Q. How am I?"
+    answer: |
+     I am a startup founder with rich open source experience. I have
+     been writing software since 1998.
+  - question: "Q. What skills do I have ?"
+    answer: |
+     I am an old school UNIX geek. And I write lot of technical articles
+     and I also love creating digital products and doing cohort courses.
+  - question: "Q. How can I talk to you?"
+    answer: |
+            You can [contact me](mailto:girish@gayatri-hitech.com) or
+            [tweet me](https://twitter.com/girish1729). All you need to 
+            do to have a session with me is to book with calendly.
+  - question: "Q. What are your hobbies?"
+    answer: |
+            Other than software development I do cooking and gardening.
+  - question: "Q. Why did I make this website ?"
+    answer: |
+            I heard personal branding takes time. So let me start it
+            before it is too late. :smile:
+---

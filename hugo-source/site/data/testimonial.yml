@@ -1,0 +1,8 @@
+---
+enable: true
+testimonial:
+  - author: "Alejandro"
+    testimonialDetails: "Nice guy to be around"
+  - author: "Max"
+    testimonialDetails: "He created LiveUSB which I have used for 6 years."
+---

@@ -1,0 +1,32 @@
+baseURL = '/'
+languageCode = 'en-us'
+paginate = 6
+theme= "hugo-source"
+title = 'Home page of Girish Venkatachalam'
+enableEmoji = true
+ 
+[Menu]
+  [[menu.Main]]
+  name = "Start Here"
+  url= "/start-here"
+  weight = 1
+  [[menu.Main]]
+  name = "Blogs"
+  url= "/blogs/"
+  weight = 2
+  [[menu.Main]]
+  name = "FAQ"
+  url= "#faq"
+  weight = 3
+  [[menu.Main]]
+  name = "Contact"
+  url= "/contact/"
+  weight = 4
+
+[params]
+  contactLink = "contact"
+  copyright = "© {year} <a href=\"https://girish1729.github.io/\" target=\"_blank\">Girish Venkatachalam</a>"
+  logo = "images/logo.png"
+  footerlogo = "images/logo.png"
+  footerDescription = "A digital nomad"
+

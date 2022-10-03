@@ -1,0 +1,20 @@
+{{define "main"}}
+<section class="contact-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto col-md-12">
+        <div class="page-header">
+          <h2> {{ .Title }}</h2>
+          <img src="{{ .Params.featureImage | absURL }}" alt="contact-images">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+	{{ .Content }}
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
