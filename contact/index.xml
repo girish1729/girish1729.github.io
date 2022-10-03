@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Contact the author on Home page of Girish Venkatachalam</title>
-    <link>/contact/</link>
+    <link>https://girish1729.github.io/contact/</link>
     <description>Recent content in Contact the author on Home page of Girish Venkatachalam</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/contact/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://girish1729.github.io/contact/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

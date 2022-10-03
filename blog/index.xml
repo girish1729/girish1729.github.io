@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Articles by Girish on Home page of Girish Venkatachalam</title>
-    <link>/blog/</link>
+    <link>https://girish1729.github.io/blog/</link>
     <description>Recent content in Articles by Girish on Home page of Girish Venkatachalam</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Nov 2018 15:15:26 +1000</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Nov 2018 15:15:26 +1000</lastBuildDate><atom:link href="https://girish1729.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Developing P2P Protocols across NAT</title>
-      <link>/blog/developing-p2p-protocols-across-nat/</link>
+      <link>https://girish1729.github.io/blog/developing-p2p-protocols-across-nat/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
       
-      <guid>/blog/developing-p2p-protocols-across-nat/</guid>
+      <guid>https://girish1729.github.io/blog/developing-p2p-protocols-across-nat/</guid>
       <description>Developing P2P Protocols across NAT by Girish Venkatachalam on June 30, 2006
 Network address translators (NATs) are something every software engineer has heard of, not to mention networking professionals. NAT has become as ubiquitous as the Cisco router in networking terms.
 Fundamentally, a NAT device allows multiple machines to communicate with the Internet using a single globally unique IP address, effectively solving the scarce IPv4 address space problem. Though not a long-term solution, as originally envisaged in 1994, for better or worse, NAT technology is here to stay, even when IPv6 addresses become common.</description>
@@ -20,10 +20,10 @@ Fundamentally, a NAT device allows multiple machines to communicate with the Int
     
     <item>
       <title>High-Performance Networking Programming in C</title>
-      <link>/blog/high-performance-networking-programming-in-c/</link>
+      <link>https://girish1729.github.io/blog/high-performance-networking-programming-in-c/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
       
-      <guid>/blog/high-performance-networking-programming-in-c/</guid>
+      <guid>https://girish1729.github.io/blog/high-performance-networking-programming-in-c/</guid>
       <description>High-Performance Networking Programming in C HOWTOs
 by Girish Venkatachalam on November 1, 2007 TCP/IP network programming in C on Linux is good fun. All the advanced features of the stack are at your disposal, and you can do lot of interesting things in user space without getting into kernel programming.
 Performance enhancement is as much an art as it is a science. It is an iterative process, akin to an artist gingerly stroking a painting with a fine brush, looking at the work from multiple angles at different distances until satisfied with the result.</description>
@@ -31,19 +31,19 @@ Performance enhancement is as much an art as it is a science. It is an iterative
     
     <item>
       <title>Multimedia dynamite</title>
-      <link>/blog/mplayer-multimedia-dynamite/</link>
+      <link>https://girish1729.github.io/blog/mplayer-multimedia-dynamite/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
       
-      <guid>/blog/mplayer-multimedia-dynamite/</guid>
+      <guid>https://girish1729.github.io/blog/mplayer-multimedia-dynamite/</guid>
       <description>Multimedia Dynamite Audio/Video by Girish Venkatachalam on October 1, 2007 What should the Linux movie player of your dreams do? It should play any movie/video that you throw at it. No questions asked—just play. It should allow seeking and volume control with the keyboard and mouse. It should work with an infrared remote controller and also play television. It should play DVDs and VCDs too. MPlayer can do all of this and much, much more.</description>
     </item>
     
     <item>
       <title>Python text processing</title>
-      <link>/blog/python-text-processing/</link>
+      <link>https://girish1729.github.io/blog/python-text-processing/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
       
-      <guid>/blog/python-text-processing/</guid>
+      <guid>https://girish1729.github.io/blog/python-text-processing/</guid>
       <description>How to do simple text processing tasks with Python Introduction Python lends itself to easy text processing, string functions, methods and facilities to deal with text input.
 To do great things with text using Python we must know both string functions and methods that operate on strings and also know your way around regular expressions.
 What will the reader learn in this article? In this article you are going to learn</description>
@@ -51,10 +51,10 @@ What will the reader learn in this article? In this article you are going to lea
     
     <item>
       <title>The OpenSSH Protocol under the Hood</title>
-      <link>/blog/openssh-protocol-under-the-hood/</link>
+      <link>https://girish1729.github.io/blog/openssh-protocol-under-the-hood/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
       
-      <guid>/blog/openssh-protocol-under-the-hood/</guid>
+      <guid>https://girish1729.github.io/blog/openssh-protocol-under-the-hood/</guid>
       <description>The OpenSSH Protocol under the Hood Security by Girish Venkatachalam on April 1, 2007
 Is there a program more commonly used in day-to-day Linux computing than SSH? I doubt it. Not only is it rock-solid, secure and versatile, but it also is extremely simple to use and feature-rich. Because its algorithms and protocols are both state of the art and their implementation is open for peer review, we can rest assured on the cryptographic integrity of SSH.</description>
     </item>

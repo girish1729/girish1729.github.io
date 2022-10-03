@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://girish1729.github.io'
 languageCode = 'en-us'
 paginate = 6
 theme= "hugo-source"
