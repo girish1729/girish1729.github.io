@@ -39,6 +39,17 @@ Performance enhancement is as much an art as it is a science. It is an iterative
     </item>
     
     <item>
+      <title>Python text processing</title>
+      <link>/blog/python-text-processing/</link>
+      <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
+      
+      <guid>/blog/python-text-processing/</guid>
+      <description>How to do simple text processing tasks with Python Introduction Python lends itself to easy text processing, string functions, methods and facilities to deal with text input.
+To do great things with text using Python we must know both string functions and methods that operate on strings and also know your way around regular expressions.
+What will the reader learn in this article? In this article you are going to learn</description>
+    </item>
+    
+    <item>
       <title>The OpenSSH Protocol under the Hood</title>
       <link>/blog/openssh-protocol-under-the-hood/</link>
       <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>

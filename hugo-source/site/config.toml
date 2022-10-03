@@ -11,8 +11,8 @@ enableEmoji = true
   url= "/start-here"
   weight = 1
   [[menu.Main]]
-  name = "Blogs"
-  url= "/blogs/"
+  name = "Blog"
+  url= "/blog/"
   weight = 2
   [[menu.Main]]
   name = "FAQ"
