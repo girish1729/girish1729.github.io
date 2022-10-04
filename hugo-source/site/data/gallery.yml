@@ -1,10 +1,14 @@
 ---
-title : "Some important pictures"
+title : "My web presence"
 subtitle: >
-        Important pictures and screenshots
+        Important web presence touchpoints
 galleryImage: 
  - image: "images/gallery/liveusb-openbsd.webp"
+   link: "https://liveusb-openbsd.sourcforge.io"
  - image: "images/gallery/github.webp"
+   link: "https://github.com/girish1729" 
  - image: "images/gallery/linkedin.webp"
- - image: "images/gallery/gumroad.webp"
+   link: "https://linkedin.com/in/girishvenkatachalam" 
+ - image: "images/gallery/twitter.webp"
+   link: "https://twitter.com/girish1729"
 ---

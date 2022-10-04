@@ -1,8 +1,16 @@
 ---
-enable: true
+title: "Sample testimonials"
+subtitle: >
+          Some recommendations on Linkedin
 testimonial:
   - author: "Alejandro"
     testimonialDetails: "Nice guy to be around"
   - author: "Max"
     testimonialDetails: "He created LiveUSB which I have used for 6 years."
+testimonialImage:
+  - image: "images/testimonials/link.webp"
+  - image: "images/testimonials/link2.webp"
+  - image: "images/testimonials/link3.webp"
+  - image: "images/testimonials/link4.webp"
+  - image: "images/testimonials/link5.webp"
 ---
