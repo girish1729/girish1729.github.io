@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ "$*" = "" ]; then
+	echo "Please provide commit message...aborting"
+	exit
+fi
 cd hugo-source/site
 hugo --themesDir ../.. --destination ../..
 cd ../..
