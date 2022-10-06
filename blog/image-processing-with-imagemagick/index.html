@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>  <head>
+    <meta charset="utf-8" />
+    <title>Image processing on command line</title>
+
+    <!--Meta For No Index-->
+    <meta name="robots" content="noindex, Nofollow, Noimageindex">
+
+    <!--mobile responsive meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="generator" content="Hugo 0.95.0" />
+    <!-- Critical CSS -->
+    
+    <link href="https://girish1729.github.io/scss/critical.min.css" rel="stylesheet" />
+  
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://girish1729.github.io/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://girish1729.github.io/images/favicon.png" type="image/x-icon" />
+
+    
+
+    
+  </head>
+
+<body>
+<header class="header">
+  <nav class="main-nav navbar navbar-expand-lg main-nav-colored">
+    <div class="container-fluid">
+      <a href="https://girish1729.github.io" class="navbar-brand">
+        <img src="https://girish1729.github.io/images/logo.png" alt="site-logo" />
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div
+        class="collapse navbar-collapse nav-list"
+        id="mainNav"
+      >
+        <ul class="navbar-nav ml-auto">
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div id="content">
+<article class="post">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="post-title">
+          <h2>Image processing on command line</h2>
+        </div>
+        <div class="post-meta">
+          <p><span>November 28, 2018</span> in 
+            
+          </p>
+        </div>
+        <div class="post-image">
+          <img src="https://girish1729.github.io/images/blog/imageproc.webp" alt="feature-image">
+        </div>
+        <div class="post-body">
+          <h1 id="image-processing-on-command-line">Image processing on command line</h1>
+<p>Girish Venkatachalam on July 1, 2007</p>
+<p>Digital photography has become so ubiquitous today that even medium-range mobile phones can capture photographs. Once you transfer photos to the PC, you need to be able to share them with friends and relatives. Most digital cameras produce such high-resolution images that sending them directly to folks via e-mail is not always convenient.</p>
+<p>This is when you need an on-line photo-sharing Web site, such as flickr.com, to help share photographs simply by uploading them. Of course, you also can do the heavy lifting with tools such as gallery2.</p>
+<p>But, in this article, I discuss how to utilize the power of the Linux command line to create an image gallery.</p>
+<h2 id="a-brief-survey-of-the-graphics-tools-in-linux">A Brief Survey of the Graphics Tools in Linux</h2>
+<p>All of you have heard of the GNU Image Manipulation Program (GIMP). It is useful for interactive image manipulation, photo retouching and other editing purposes, but I find it quite difficult to use. There are often much simpler alternatives that do a much better job for commonplace image editing. The nice thing about these alternatives is that you can run them directly from the almighty command line, which can save time and facilitate easy scripting. Here are some such tools that interest me:</p>
+<ul>
+<li>qiv: this one is the fastest of the lot. It is lightweight, and it can handle a huge list of images on the command line.</li>
+</ul>
+<p>In fact, you can reproduce the “persistence of vision” effect of video by dumping the frames using MPlayer&rsquo;s -vo jpeg or -vo png driver and view them using qiv .</p>
+<p>Pressing the spacebar gives the same effect of actually watching the video sans the audio.</p>
+<ul>
+<li>
+<p>xloadimage: xloadimage, or xli, is another application for viewing images.</p>
+</li>
+<li>
+<p>xv: this one is rather outdated now, but it is worth taking a look at it. Some of its image processing algorithms are cool.</p>
+</li>
+<li>
+<p>tgif: tgif, along with dia, xfig and friends, is most useful for creating technical drawings, block diagrams and the like. I find tgif to be really user-friendly and powerful when it comes to certain common image processing tasks, such as generating a collage or mosaic of images and annotating images with text.</p>
+</li>
+<li>
+<p>Netpbm suite: this suite has more than 200 command-line utilities and is used for advanced image processing purposes that primarily are designed to be invoked from the Linux command line.</p>
+</li>
+<li>
+<p>ImageMagick suite: this suite can be described as the be-all end-all of image processing. It has mind-boggling capabilities that can create animations, logos, convert file formats and, of course, do highly sophisticated image processing. Go to <a href="https://www.imagemagick.org/Usage">www.imagemagick.org/Usage</a> for details on all it can do.</p>
+</li>
+</ul>
+<p>In this article, I focus primarily on using the ImageMagick toolkit for the purpose of creating an image gallery.</p>
+<h2 id="a-few-basics">A Few Basics</h2>
+<p>Obviously, you will want the gallery to be an HTML page for sharing with friends using the Web.</p>
+<p>The first step involves generating thumbnails for all the images. These have to be linked to the images using HTML tags. But, before that, you need to take care of the images&rsquo; varying orientations. Different photographs may have different dimensions, and you should be able to categorize the thumbnails based on that. This is no hard and fast rule, but I prefer it this way.</p>
+<p>The next task is to annotate the images with relevant text, by watermarking either below or above the image. ImageMagick has a rich toolchest for achieving this task in an elegant manner.</p>
+<p>You also will want to be able to retrieve, save and optionally display the EXIF data embedded in the photographs. After annotating the images, you may want to generate borders, frames or 3-D reliefs for better visual appeal. Usually, they look nice on Web pages with a white background.</p>
+<p>Another nice-to-have feature is to be able to generate black-and-white photo equivalents. Of course, in addition to all this, if users want to download the original, untouched, pristine photo in full size, they should be able to do so. It might be worthwhile to provide a download link for all the photos in one single zip file.</p>
+<p>For people who don&rsquo;t like clicking on each of the thumbnails, you can provide a slideshow. But, on Linux, you can do much better. You can create a full-fledged video with sound effects. I prefer a nice MIDI tune, appropriate for the occasion and mood of the snaps. This has a side benefit of being directly writable to DVD too.</p>
+<p>But before this, it&rsquo;s a good idea to create vertical and horizontal mirror images of each of the photos. That way, the video has a better flow and visual appeal. It so happens that this is extremely easy to do with the Linux command line and ImageMagick.</p>
+<p>You might have other requirements, such as correcting the exposure, brightness or contrast, cropping out certain parts of the image or doing photo retouching with more interesting effects. Again, ImageMagick can do the trick (as can qiv and other image display tools). To correct images, you might prefer an interactive tool, such as The GIMP or tgif.</p>
+<p>Other possibilities exist, such as creating a mosaic of images annotated with nice fonts, but this does not make much sense in an image gallery application.</p>
+<h2 id="now-lets-get-down-to-business">Now, let&rsquo;s get down to business.</h2>
+<p>The Code for the Task</p>
+<p>It is best to use /bin/sh as the programming language. Because all the work is already done most elegantly and naturally by command-line utilities, you need only to invoke them with the appropriate switches and generate simple HTML code a la google.com.</p>
+<p>The first task is to segregate the images into different directories, depending on the dimensions and orientation of each image. This is easily done with the following block of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># script to segregate images based on dimensions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> image in *jpg
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>dimension<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>identify -format <span style="color:#e6db74">&#34;%wx%h&#34;</span> $image<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># we don&#39;t want mkdir shouting at us for </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># directories that exist!</span>
+</span></span><span style="display:flex;"><span>mkdir $dimension 2&gt;/dev/null 
+</span></span><span style="display:flex;"><span>mv $image $dimension
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>Now we have all images of identical dimensions, neatly arranged in separate directories. Let&rsquo;s proceed to generating the thumbnails for each of them. This script generates the thumbnails:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># script to segregate images based on dimensions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this is where we have all the thumbnails for each of the</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># images classified by dimensions above</span>
+</span></span><span style="display:flex;"><span>mkdir thumb
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> dir in <span style="color:#e6db74">`</span>ls -F |grep / | grep ^<span style="color:#f92672">[</span>0-9<span style="color:#f92672">]</span> <span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span> mkdir thumb/$dir 2&gt;/dev/null
+</span></span><span style="display:flex;"><span> cd $dir
+</span></span><span style="display:flex;"><span> width<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo $dir | cut -dx -f1<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span> height<span style="color:#f92672">=</span><span style="color:#e6db74">`</span> echo $dir | cut -dx -f2 | cut -d/ -f1 <span style="color:#e6db74">`</span> 
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">for</span> image in *
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>   convert -size <span style="color:#e6db74">${</span>width<span style="color:#e6db74">}</span>x<span style="color:#e6db74">${</span>height<span style="color:#e6db74">}</span> $image  -resize 20% <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	   ../thumb/<span style="color:#e6db74">${</span>dir<span style="color:#e6db74">}</span>thumb-$image
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span> cd ..
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>With ImageMagick, you have several nice features available for decorating thumbnails, and they look impressive.</p>
+<ol>
+<li>Thumbnail with thickness and shadow:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ convert rose.jpg -matte <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#ae81ff">\(</span> +clone -fx DarkSlateGrey -repage +0+1 <span style="color:#ae81ff">\)</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#ae81ff">\(</span> +clone -repage +1+2 <span style="color:#ae81ff">\)</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#ae81ff">\(</span> +clone -repage +1+3 <span style="color:#ae81ff">\)</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#ae81ff">\(</span> +clone -repage +2+4 <span style="color:#ae81ff">\)</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#ae81ff">\(</span> +clone -repage +2+5 <span style="color:#ae81ff">\)</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#ae81ff">\(</span> +clone -repage +3+6 <span style="color:#ae81ff">\)</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -background none -compose DstOver -mosaic rose-thickness.jpg
+</span></span></code></pre></div><ol start="2">
+<li>A raised button effect:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ convert -raise 8x8 rose.jpg rose-raised.jpg
+</span></span></code></pre></div><ol start="3">
+<li>Adding a frame to the thumbnail:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$convert -mattecolor peru -frame 9x9+3+3 rose.jpg rose-frame.jpg
+</span></span></code></pre></div><p>Writing Your Own Image Gallery Application with the UNIX Shell
+Figure 1. Image with Frame</p>
+<p>Next, let&rsquo;s look at some interesting ways to annotate images with ImageMagick:</p>
+<ol>
+<li>Text on the bottom-left corner with a vertical orientation:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ convert rose.jpg -font helvetica -fill white <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -pointsize <span style="color:#ae81ff">20</span> -gravity southwest -annotate <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  270x270+15+0 <span style="color:#e6db74">&#39;Nice pink rose&#39;</span> rose-text.jpg
+</span></span></code></pre></div><p>Figure 2. Image with Text</p>
+<ol start="2">
+<li>Text on a frame:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ montage -geometry +0+0 -background white -fill <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  brown -label <span style="color:#e6db74">&#39;Nice pink rose&#39;</span> rose.jpg rose-text.jpg
+</span></span></code></pre></div><p>Note that you can give any color to the -background and -fill switches. To find which colors are supported by ImageMagick, type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ convert -list color
+</span></span></code></pre></div><ol start="3">
+<li>You also can watermark, like this:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ convert rose.jpg -font helvetica -pointsize <span style="color:#ae81ff">20</span> -draw <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;gravity south  \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      fill black text 0,12 &#39;Nice pink rose&#39; \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      fill white text 1,11 &#39;Nice pink rose&#39; &#34;</span> rose-text.jpg
+</span></span><span style="display:flex;"><span>Writing Your Own Image Gallery Application with the UNIX Shell
+</span></span></code></pre></div><p>Figure 3. Image with Watermarking</p>
+<ol start="4">
+<li>Label the image on the top like this:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ convert rose.jpg -gravity North -background green <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -splice 0x18 -draw <span style="color:#e6db74">&#34;text 0,0 &#39;Nice \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  pink rose&#39; &#34;</span> rose-top.jpg
+</span></span></code></pre></div><p>You can create a video from the images using mencoder or FFmpeg. But before that, let&rsquo;s first create the horizontal and vertical mirror images of the snaps. It will be interesting to combine the images with the mirrors while playing the video:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$convert rose.jpg -flip rose-flip.jpg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$convert rose.jpg -flop rose-flop.jpg
+</span></span></code></pre></div><p>These two commands create the vertical and horizontal mirror images, respectively.</p>
+<p>You can combine the mirrors with the original with the append switch to convert:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$convert rose.jpg rose-flip.jpg -append rose-vertical.jpg
+</span></span></code></pre></div><p>Instead of -append, if you specify +append, it creates the images side by side, which is what we want to do with horizontal mirror images:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$convert rose.jpg rose-flop.jpg +append rose-horiz.jpg
+</span></span></code></pre></div><p>You might consider using the -resize option or -scale option to convert all images to identical dimensions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mencoder <span style="color:#e6db74">&#34;mf://*.jp&#34;</span> -mf fps<span style="color:#f92672">=</span>0.5:type<span style="color:#f92672">=</span>jpg -o <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  image-video.avi -ovc lavc -lavcopts vcodec<span style="color:#f92672">=</span>mjpeg
+</span></span></code></pre></div><p>This creates an image video with all the images displaying one after another at an interval of one image every two seconds (fps=0.5). But, bear in mind that all the images need to have identical dimensions, or this will not work.</p>
+<p>Now, you can combine this with a nice audio file to create a video that is playable on a DVD:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ lav2yuv +n image-video.avi | mpeg2enc -f <span style="color:#ae81ff">8</span> -o image-video.m2v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ mplex -f <span style="color:#ae81ff">8</span> audio.ac3 image-video.m2v -o final-video.mpg
+</span></span><span style="display:flex;"><span>Now, simply copy the final-video.mpg into your DVD and you are <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><p>You can generate the black-and-white equivalents of a color image using this command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ xloadimage rose.jpg -dump jpeg,grayscale rose-bw.jpg
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>To create an image gallery application, you need to obtain the thumbnails, border style of images, audio file for the background music and the text for annotating each image. You also can give the user the opportunity to specify a particular annotation style.</p>
+<p>Once you have these inputs, you can use the command-line ImageMagick tools to create a gallery and use a simple shell script to link them all together with HTML and produce a Web page.</p>
+<p>Resources</p>
+<ul>
+<li>
+<p><a href="https://www.imagemagick.org/Usage">ImageMagick</a></p>
+</li>
+<li>
+<p><a href="https://netpbm.sourceforge.net">Netpbm</a></p>
+</li>
+<li>
+<p><a href="https://bourbon.usc.edu/tgif">tgif</a></p>
+</li>
+<li>
+<p><a href="https://gallery.sourceforge.net">gallery2</a></p>
+</li>
+</ul>
+<hr>
+<p>Girish Venkatachalam is a cryptographer with nearly a decade of experience working on various modern UNIX systems. He has developed IPSec from scratch on the Nucleus OS for a router and worked with the guts of Apache, OpenSSL and SSH. He can be reached at <a href="mailto:girish1729@gmail.com">girish1729@gmail.com</a>.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div><section class="footer">
+  <div class="container">
+
+    <div class="row justify-content-between">
+        <div class="footer-logo">
+          A digital nomad
+        </div>
+    </div>
+
+<hr/>
+    <div class="row justify-content-between">
+
+<script type="text/javascript"
+src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="girish1729" data-color="#FFDD00" data-emoji=""  data-font="Arial" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
+<a href="https://twitter.com/girish1729?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @girish1729</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+   </div>
+
+   <div class="footer-copyright-text">
+          <p> © 2022 <a href="https://girish1729.github.io/" target="_blank">Girish Venkatachalam</a> </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Non Critical CSS -->
+
+<link href="https://girish1729.github.io/scss/non-critical.min.css" rel="stylesheet" />
+<script src="https://maps.googleapis.com/maps/api/js?key=&libraries=geometry">
+</script>
+<!-- VENDOR JS -->
+<script src="https://girish1729.github.io/vendor/jQuery/jquery.min.js"></script>
+<script src="https://girish1729.github.io/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="https://girish1729.github.io/vendor/slick/slick.min.js"></script>
+<script src="https://girish1729.github.io/vendor/aos/aos.js"></script>
+<script src="https://girish1729.github.io/vendor/match-height/match-height.js"></script>
+<script src="https://girish1729.github.io/vendor/magnific-popup/magnific-popup.min.js"></script>
+<script src="https://girish1729.github.io/vendor/g-map/gmap.js"></script>
+
+ 
+<script src="https://girish1729.github.io/js/script.min.js"></script>
+
+
+</body>
+</html>
