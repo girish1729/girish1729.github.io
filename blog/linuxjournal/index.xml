@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home page of Girish Venkatachalam</title>
-    <link>https://girish1729.github.io/</link>
-    <description>Recent content on Home page of Girish Venkatachalam</description>
+    <title>Cover stories in LinuxJournal on Home page of Girish Venkatachalam</title>
+    <link>https://girish1729.github.io/blog/linuxjournal/</link>
+    <description>Recent content in Cover stories in LinuxJournal on Home page of Girish Venkatachalam</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Nov 2018 15:15:26 +1000</lastBuildDate><atom:link href="https://girish1729.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Nov 2018 15:15:26 +1000</lastBuildDate><atom:link href="https://girish1729.github.io/blog/linuxjournal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Developing P2P Protocols across NAT</title>
       <link>https://girish1729.github.io/blog/linuxjournal/developing-p2p-protocols-across-nat/</link>
@@ -48,17 +48,6 @@ This is when you need an on-line photo-sharing Web site, such as flickr.</descri
       <guid>https://girish1729.github.io/blog/linuxjournal/mplayer-multimedia-dynamite/</guid>
       <description>Multimedia Dynamite Audio/Video by Girish Venkatachalam on October 1, 2007
 What should the Linux movie player of your dreams do? It should play any movie/video that you throw at it. No questions asked—just play. It should allow seeking and volume control with the keyboard and mouse. It should work with an infrared remote controller and also play television. It should play DVDs and VCDs too. MPlayer can do all of this and much, much more.</description>
-    </item>
-    
-    <item>
-      <title>Python text processing</title>
-      <link>https://girish1729.github.io/blog/python-text-processing/</link>
-      <pubDate>Wed, 28 Nov 2018 15:15:26 +1000</pubDate>
-      
-      <guid>https://girish1729.github.io/blog/python-text-processing/</guid>
-      <description>How to do simple text processing tasks with Python Introduction Python lends itself to easy text processing, string functions, methods and facilities to deal with text input.
-To do great things with text using Python we must know both string functions and methods that operate on strings and also know your way around regular expressions.
-What will the reader learn in this article? In this article you are going to learn</description>
     </item>
     
     <item>

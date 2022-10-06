@@ -2,25 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://girish1729.github.io/blog/developing-p2p-protocols-across-nat/</loc>
+    <loc>https://girish1729.github.io/blog/linuxjournal/developing-p2p-protocols-across-nat/</loc>
     <lastmod>2018-11-28T15:15:26+10:00</lastmod>
   </url><url>
-    <loc>https://girish1729.github.io/blog/high-performance-networking-programming-in-c/</loc>
+    <loc>https://girish1729.github.io/blog/linuxjournal/high-performance-networking-programming-in-c/</loc>
     <lastmod>2018-11-28T15:15:26+10:00</lastmod>
   </url><url>
-    <loc>https://girish1729.github.io/blog/image-processing-with-imagemagick/</loc>
+    <loc>https://girish1729.github.io/blog/linuxjournal/image-processing-with-imagemagick/</loc>
     <lastmod>2018-11-28T15:15:26+10:00</lastmod>
   </url><url>
-    <loc>https://girish1729.github.io/blog/mplayer-multimedia-dynamite/</loc>
+    <loc>https://girish1729.github.io/blog/linuxjournal/mplayer-multimedia-dynamite/</loc>
     <lastmod>2018-11-28T15:15:26+10:00</lastmod>
   </url><url>
     <loc>https://girish1729.github.io/blog/python-text-processing/</loc>
     <lastmod>2018-11-28T15:15:26+10:00</lastmod>
   </url><url>
-    <loc>https://girish1729.github.io/blog/openssh-protocol-under-the-hood/</loc>
+    <loc>https://girish1729.github.io/blog/linuxjournal/openssh-protocol-under-the-hood/</loc>
     <lastmod>2018-11-28T15:15:26+10:00</lastmod>
   </url><url>
     <loc>https://girish1729.github.io/blog/</loc>
+    <lastmod>2018-11-28T15:15:26+10:00</lastmod>
+  </url><url>
+    <loc>https://girish1729.github.io/blog/linuxjournal/</loc>
     <lastmod>2018-11-28T15:15:26+10:00</lastmod>
   </url><url>
     <loc>https://girish1729.github.io/</loc>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>  <head>
+    <meta charset="utf-8" />
+    <title>Developing P2P Protocols across NAT</title>
+
+    <!--Meta For No Index-->
+    <meta name="robots" content="noindex, Nofollow, Noimageindex">
+
+    <!--mobile responsive meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="generator" content="Hugo 0.95.0" />
+    <!-- Critical CSS -->
+    
+    <link href="https://girish1729.github.io/scss/critical.min.css" rel="stylesheet" />
+  
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://girish1729.github.io/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://girish1729.github.io/images/favicon.png" type="image/x-icon" />
+
+    
+
+    
+  </head>
+
+<body>
+<header class="header">
+  <nav class="main-nav navbar navbar-expand-lg main-nav-colored">
+    <div class="container-fluid">
+      <a href="https://girish1729.github.io" class="navbar-brand">
+        <img src="https://girish1729.github.io/images/logo.png" alt="site-logo" />
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div
+        class="collapse navbar-collapse nav-list"
+        id="mainNav"
+      >
+        <ul class="navbar-nav ml-auto">
+          
+          
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io/start-here">Start Here</a>
+          </li>
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io/blog/">Blog</a>
+          </li>
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io#faq">FAQ</a>
+          </li>
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io/contact/">Contact</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div id="content">
+<article class="post">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="post-title">
+          <h2>Developing P2P Protocols across NAT</h2>
+        </div>
+        <div class="post-meta">
+          <p><span>November 28, 2018</span> in 
+            
+          </p>
+        </div>
+        <div class="post-image">
+          <img src="https://girish1729.github.io/images/blog/nat.webp" alt="feature-image">
+        </div>
+        <div class="post-body">
+          <h1 id="developing-p2p-protocols-across-nat">Developing P2P Protocols across NAT</h1>
+<p>by Girish Venkatachalam on June 30, 2006</p>
+<p>Network address translators (NATs) are something every software engineer
+has heard of, not to mention networking professionals. NAT has become as
+ubiquitous as the Cisco router in networking terms.</p>
+<p>Fundamentally, a NAT device allows multiple machines to communicate with
+the Internet using a single globally unique IP address, effectively
+solving the scarce IPv4 address space problem. Though not a long-term
+solution, as originally envisaged in 1994, for better or worse, NAT
+technology is here to stay, even when IPv6 addresses become common. This
+is partly because IPv6 has to coexist with IPv4, and one of the ways to
+achieve that is by using NAT technology.</p>
+<p>This article is not so much a description of how a NAT works. There
+already is an excellent article on this subject by Geoff Huston (see the
+on-line Resources). It is quite comprehensive, though plenty of other
+resources are available on the Internet as well.</p>
+<p>This article discusses a possible solution to solving the NAT problem
+for P2P protocols.</p>
+<h2 id="what-is-wrong-with-nat">What Is Wrong with NAT?</h2>
+<p>NAT breaks the Internet more than it makes it. I may sound harsh here,
+but ask any peer-to-peer application developer, especially the VoIP
+folks, and they will tell you why.</p>
+<p>For instance, you never can do Web hosting behind a NAT device. At
+least, not without sufficient tweaking. Not only that, you cannot run
+any service such as FTP or rsync or any public service through a NAT
+device. This can be solved by obtaining a globally unique IP address and
+configuring the NAT device to bypass traffic originating from that
+particular IP.</p>
+<p>But, the particularly hairy issue with NATed IP addresses is that you
+can&rsquo;t access machines behind a NAT, simply because you won&rsquo;t even know
+that a NAT exists in between. By and large, NAT is designed to be
+transparent, and it remains so. Even if you know there is a NAT device,
+NAT will let traffic reach the appropriate private IP only if there is
+mapping between the private IP/TCP or UDP port number with the NAT&rsquo;s
+public IP/TCP or UDP port number. And, this mapping is created only when
+traffic originates from the private IP to the Internet—not vice versa.</p>
+<p>To make things more complicated, NAT simply drops all unsolicited
+traffic coming from the Internet to the private hosts. Though this
+feature arguably adds a certain degree of security through obscurity, it
+creates more problems than it solves, at least from the perspective of
+the future of the Internet.</p>
+<p>At least 50% of the most commonly used networking applications use
+peer-to-peer technology. Common examples include instant messaging
+protocols, VoIP applications, such as Skype, and the BitTorrent download
+accelerator. In fact, peer-to-peer traffic is only going to increase as
+time progresses, because the Internet has a lot more to offer beyond the
+traditional client/server paradigm.</p>
+<p>Peer-to-peer technology, by definition, is a mesh network as opposed to
+a star network in a client/server model. In a peer-to-peer network, all
+nodes act simultaneously as client and server. This already leads to
+programming complexity, and peer-to-peer nodes also have to deal somehow
+with the problematic NAT devices in between.</p>
+<p>To make things even more difficult for P2P application developers, there
+is no standardized NAT behavior. Different NAT devices behave
+differently. But, the silver lining is that a large portion of the NAT
+devices in existence today still behave sensibly enough at least to let
+peer-to-peer UDP traffic pass through.</p>
+<p>Sending TCP traffic across a NAT device also has met with success,
+though you may not be as lucky as with UDP. In this article, we focus
+purely on UDP, because TCP NAT traversal still remains rather tricky.
+UDP NAT traversal also is not completely reliable across all NAT
+devices, but things are very encouraging now and will continue to get
+better as NAT vendors wake up to the need for supporting P2P protocols.</p>
+<p>Incidentally, voice traffic is better handled by UDP, so that suits us
+fine. Now that we have a fairly good idea of the problem we are trying
+to solve, let&rsquo;s get down to the solution.</p>
+<h2 id="anatomy-of-the-solution">Anatomy of the Solution</h2>
+<p>The key to the NAT puzzle lies in the fact that in order for machines
+behind a NAT gateway to interact with the public Internet, NAT devices
+necessarily have to allow inbound traffic—that is, replies to requests
+originating from behind the NAT device. In other words, NAT devices let
+traffic through to a particular host behind a NAT device, provided the
+traffic is indeed a reply to a request sent by the NAT device. Now, as
+mentioned above, NAT devices vary widely in operation, and they let
+through replies coming from other hosts and port numbers, depending on
+their own notion of what a reply means.</p>
+<p>Our job is simple if we understand this much—that instead of connecting
+directly to the host behind NAT, we somehow need to mimic a scenario in
+which the target host originates a connection to us and then we connect
+to it as though we are responding to the request. In other words, our
+connection request to the target host should seem like a reply to the
+NAT device.</p>
+<p>It turns out that this technique is easy to achieve using a method now
+widely known as UDP hole punching. Contrary to what the name suggests,
+this does not leave a gaping security hole or anything of the sort; it
+is simply a perfectly sensible and effective way to solve the NAT
+problem for peer-to-peer protocols.</p>
+<p>In a nutshell, what UDP hole punching does already has been explained.
+Now if it were only that, life would be too simple, and you would not be
+reading this article. As it turns out, there are plenty of obstacles on
+the way, but none of them are too complicated.</p>
+<p>First is the issue of how to get the private host to originate traffic
+so we can send our connection request to it masquerading as a reply. To
+make things worse, NAT devices also have an idle timer, typically of
+around 60 seconds, such that they stop waiting for replies once a
+request originates and no reply comes within 60 seconds. So, it is not
+enough that the private host originate traffic, but also we have to act
+fast—we have to send the “reply” before the NAT device removes the
+“association” with the private host, which will frustrate our connection
+attempt.</p>
+<p>Now, a reply obviously has to come from the original machine to which
+the request was sent. This suits us fine if we are not behind another
+NAT device. So, if we want to talk to a private IP, we make the private
+IP send a packet to us, and we send our connection request as a reply to
+it. But, how do we inform the private IP to send a packet to us when we
+want to talk to it?</p>
+<p>If both the peer-to-peer hosts are behind different NAT devices, is it
+possible at all to communicate with each other? Fortunately, it is
+possible.</p>
+<p>It turns out that NAT devices are somewhat forgiving, and they differ in
+their levels of leniency when it comes to interpreting what they
+consider as reply to a request. There are different varieties of NAT
+behavior:</p>
+<ul>
+<li>
+<p>Full cone NAT</p>
+</li>
+<li>
+<p>Restricted cone NAT</p>
+</li>
+<li>
+<p>Restricted port NAT</p>
+</li>
+<li>
+<p>Symmetric NAT</p>
+</li>
+</ul>
+<p>I won&rsquo;t go into the details and definitions of these here, as there are
+numerous resources explaining them elsewhere. Symmetric NATs are the
+most formidable enemy for P2P applications. However, with a degree of
+cleverness, we can reasonably “guess” the symmetric NAT behavior and
+deal with it—well, not all symmetric NATs, but many of them can be tamed
+to allow P2P protocols.</p>
+<p>First, how do we tell the private IP that we are interested in
+connecting to it at a particular instance?</p>
+<h2 id="implementation-details-of-the-udp-hole-punching-technique">Implementation Details of the UDP Hole Punching Technique</h2>
+<p>This problem can be solved by joining the problem, rather than fighting
+it head on. In order to achieve peer-to-peer traffic across NATs, we
+have to modify our P2P mesh model slightly to make it a hybrid of a
+traditional star model and modern mesh model.</p>
+<p>So, we introduce the concept of a rendezvous server, or mediator server,
+which listens on a globally routable IP address. Almost all peer-to-peer
+protocols have traditionally relied on certain supernodes, or in other
+words, in P2P, all nodes are equal but some are more equal. Some nodes
+always have acted as key players in any P2P protocol. If you have heard
+of a BitTorrent tracker, you know what I mean.</p>
+<p>A rendezvous concept is nothing new in the P2P world, nor is the star
+model totally done away with in P2P.</p>
+<p>Coming back to our original NAT problem, private IPs obviously can
+browse the Internet through NAT devices, and thus they can talk HTTP
+through port 80 or through a proxy HTTP port over TCP. So private IPs
+can almost always open TCP connections to global IP addresses. We use
+this fact to make the private IP connect to a mediator or rendezvous
+server through TCP.</p>
+<p>Our solution relies on the fact that all the P2P nodes are constantly in
+touch with a rendezvous server, listening on a global IP address through
+a persistent TCP connection. Remember that P2P nodes are both client and
+server at the same time, so they can originate connections as well as
+serve connection requests simultaneously.</p>
+<p>It is through this TCP connection that we inform a particular P2P node
+that another node wants to talk to it. Then, the target node sends a
+request following which the peer sends the connection request as a
+response to the request.</p>
+<p>Because the private machines behind a NAT device do not have a routable
+IP address, the only way for us to access them from outside the NAT
+device is through the mapping that the NAT device maintains for the
+machine to talk to the external world. For each connection originated
+from the private IP, a unique port is assigned at the NAT device. For us
+to talk to the private IP, we have to send our packets to that
+particular port assigned for the private IP&rsquo;s connection to the external
+world. Now, we know that there is no notion of connection in the UDP
+world, so NAT assumes that if a reply doesn&rsquo;t come for a UDP request in
+about 60 seconds, the connection is deemed non-existent and closed.</p>
+<p>So now we have another problem—that of determining the port assigned at
+the NAT&rsquo;s public interface for the private IP connection. This can be
+inferred by inspecting the source address of the UDP datagram that
+reaches any global IP.</p>
+<p>So far so good. If we are not behind NAT, we can use the previously
+mentioned technique to initiate communication with a private IP using
+the rendezvous server.</p>
+<p>However, reality tells us that P2P peers are more likely to be behind a
+NAT than otherwise. So, this solution is not enough. We want to initiate
+a P2P connection from behind a NAT device ourselves. So, now we have two
+NAT devices in the picture, one behind each P2P node.</p>
+<p>Now the real fun begins. First, let&rsquo;s redefine our goal in the light of
+this new twist to the problem and attack it step by step. What we want
+to do now is use the rendezvous server and inform the target P2P node to
+send us a request, but we are behind a NAT.</p>
+<p>So, for any external party to talk to us, we should have a global
+IP/port combo that exists at the NAT public interface. First we have to
+create one for ourselves. Only then we can receive communication
+requests coming from outside the NAT network.</p>
+<p>We can create a mapping for us by sending a packet to a global IP. The
+global IP can then figure out our mapping by inspecting the from
+address. But how do we inform our P2P node of this address? For that we
+can use the TCP connection with the rendezvous machine. But, only the
+global IP to which we send the packet knows our association, so how do
+we figure that out? It&rsquo;s simple. The global IP can send that information
+to us as a reply in the packet payload to us.</p>
+<p>Assuming that we somehow obtain a public IP, port pair and figure that
+out, we tell the mediator that we are listening at that public IP/port
+pair and request the P2P target node to initiate a request to us.
+Subsequently, we can connect to it as a reply to that message.</p>
+<p>But, then we cannot receive packets from the P2P target node, because
+NAT is not expecting a reply from that global IP. In fact, some NATs
+that show full cone behavior allow packets to come from any IP, but most
+NATs do not—back to square one.</p>
+<p>Consider this: if both P2P nodes behind the NAT send packets to each
+other&rsquo;s public IP/port, the first packet from each party is discarded
+because it was unsolicited. But subsequent packets are let through
+because NAT thinks the packets are replies to our original request. And
+voilà the hole is punched, and UDP traffic can pass through directly
+between the P2P nodes.</p>
+<p>Unfortunately, NATs also differ in their behavior of assigning public
+ports for different destination IPs. Most NAT devices fortunately do not
+change public ports between requests to different destination IPs, so we
+can safely assume that.</p>
+<p>So first we send certain probe or discovery packets to two different IPs
+and figure out the behavior of the NAT. If it is found to be consistent,
+our approach will work. In the unlikely case that we bump into symmetric
+NAT behavior that varies the port between requests, we can figure out
+the delta by which the port number varies. And, using this we can guess
+the port assigned for a particular request.</p>
+<p>The reason we are so particular about this is because the first packet
+to our P2P destination behind NAT is dropped by NAT. So, all we can do
+is guess. In practice, however, it works fairly well. This is why it is
+important that the P2P nodes keep the source and the destination ports
+the same for communication.</p>
+<p>Once this hole punching procedure is performed, the two P2P nodes can
+communicate with each other without the help of the rendezvous machine.
+So the rendezvous machine is useful only for informing a P2P node about
+an incoming connection and informing each of the communicating peers
+about each other&rsquo;s public addresses. Subsequently, the communication
+happens directly without the intervention of the rendezvous server.</p>
+<p>Now we have to apply some ingenuity and introduce appropriate headers in
+the packets to inform the peer whether it is sending a reply meant for
+the P2P client or whether it is sending a request meant for the P2P
+server. Once we are able to differentiate between the two, we are set.
+We also need to differentiate between hole punching traffic and regular
+traffic, because hole punching traffic needs to be bounced, and regular
+traffic needs to be processed.</p>
+<p>Of course, if we stop sending and receiving, the association at the NAT
+device at both ends will expire. So we either can send keepalive traffic
+or rerun the hole punching technique. You can choose whichever technique
+is suitable depending upon your needs.</p>
+<p>This technique will not work if both the P2P nodes are behind the same
+NAT device. So, we also have to figure out whether we can communicate
+directly using the private IP address itself. Thus, our hole punching
+has to try the private interface along with the peer&rsquo;s public interface.
+And, it can happen that our private network has the same private IP as
+the peer&rsquo;s private IP. So we have to guard against getting spurious
+responses.</p>
+<p>It also can happen that another P2P node in the same private network as
+ours has the same private IP as the P2P node we want to talk to in
+another private network. Then we have to do additional validation
+against the peer&rsquo;s identity to make sure we really are talking to the
+interested node.</p>
+<p>In the unlikely case that you run into brain-damaged NAT devices at both
+ends, this technique obviously will fail, because we should be able to
+predict the public address assigned to us. In that situation, the only
+way is to make the rendezvous server act as a relay for the traffic. So
+peer-to-peer traffic goes through, but it is no longer peer to peer with
+the rendezvous machine acting as server. If you run into such
+situations, you need to think of implementing that as well.</p>
+<p>Now, for the Real Dope, the C Code for Achieving the above
+Due to their long length, the listings for this article are located on
+the Linux Journal FTP site
+<a href="ftp.linuxjournal.com/pub/lj/listings/issue148/9004.tgz">here</a>.</p>
+<p>I leave out
+unnecessary detail and glue code and focus purely on the nontrivial
+aspects of UDP hole punching.</p>
+<p>If you need more information on implementing your own hole punching
+library, you always can refer to the above design constraints and design
+a solution appropriately.</p>
+<p>Please note that I have consciously left out the rfcs and NAT discovery
+techniques, such as STUN and frameworks like ICE. UDP hole punching is
+already complicated, and we don&rsquo;t gain anything by making it even more
+bloated without adding any real value. So, the technique as it stands
+works as good or even better than other NAT traversal mechanisms.</p>
+<p>First, take a look at the rendezvous code (Listing 1). Note that we use
+select() to serve multiple sockets. We could as well use kqueue() on
+BSD, or better, use the libevent abstraction (see Resources). But, I
+stuck to select() because performance doesn&rsquo;t matter so much to us. We
+talk to the mediator server only for establishing peer-to-peer
+connections, not otherwise.</p>
+<p>The hole punching implementation is given in Listing 2 and the P2P
+client in Listing 3.</p>
+<p>Using this method, you should be able to develop your own peer-to-peer
+protocol. You easily can develop your own instant messaging protocol
+along with some GUI code. You can transfer files either using nc or
+using code for that directly. You can develop certain applications, such
+as transferring voice via a microphone and speaker. In other words, you
+can develop a hobby VoIP application with this.</p>
+<p>Several possibilities exist. You can add some reliability on top of UDP
+in case you are paranoid about your data reaching you safely.</p>
+<p>One very useful tool that helped me immensely in this endeavor is the
+Network Swiss-Army knife, netcat.</p>
+<p>You can see hole punching in action by using this simple command. At
+each end, type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>      $ nc -u -p <span style="color:#ae81ff">17000</span> &lt;peer public IP&gt; <span style="color:#ae81ff">17000</span>
+</span></span></code></pre></div><p>With only the peer public IP different, you can start communicating if
+you are lucky, because most NAT devices try to assign the same private
+port as the public port.</p>
+<p>If you want to test TCP hole punching, try this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>         $nc -l -p <span style="color:#ae81ff">17000</span>
+</span></span></code></pre></div><p>at one end and this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>      $nc -p <span style="color:#ae81ff">17000</span> &lt;peer public IP&gt; <span style="color:#ae81ff">17000</span>
+</span></span></code></pre></div><p>at the other end.</p>
+<h2 id="future-work">Future Work</h2>
+<p>Rather than having one rendezvous server, you can have a few of them for
+failover and geographical distribution. However, if you are behind two
+levels of NAT, sometimes this may not work. You also could listen on
+multiple virtual and real interfaces and attempt hole punching on all of
+them. You can add TCP hole punching on similar lines and try that first,
+and then attempt UDP hole punching.</p>
+<p><a href="/blog/linuxjournal">Back to LinuxJournal</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div><section class="footer">
+  <div class="container">
+
+    <div class="row justify-content-between">
+        <div class="footer-logo">
+          A digital nomad
+        </div>
+    </div>
+
+<hr/>
+    <div class="row justify-content-between">
+
+<script type="text/javascript"
+src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="girish1729" data-color="#FFDD00" data-emoji=""  data-font="Arial" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
+<a href="https://twitter.com/girish1729?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @girish1729</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+   </div>
+
+   <div class="footer-copyright-text">
+          <p> © 2022 <a href="https://girish1729.github.io/" target="_blank">Girish Venkatachalam</a> </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Non Critical CSS -->
+
+<link href="https://girish1729.github.io/scss/non-critical.min.css" rel="stylesheet" />
+<script src="https://maps.googleapis.com/maps/api/js?key=&libraries=geometry">
+</script>
+<!-- VENDOR JS -->
+<script src="https://girish1729.github.io/vendor/jQuery/jquery.min.js"></script>
+<script src="https://girish1729.github.io/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="https://girish1729.github.io/vendor/slick/slick.min.js"></script>
+<script src="https://girish1729.github.io/vendor/aos/aos.js"></script>
+<script src="https://girish1729.github.io/vendor/match-height/match-height.js"></script>
+<script src="https://girish1729.github.io/vendor/magnific-popup/magnific-popup.min.js"></script>
+<script src="https://girish1729.github.io/vendor/g-map/gmap.js"></script>
+
+ 
+<script src="https://girish1729.github.io/js/script.min.js"></script>
+
+
+</body>
+</html>

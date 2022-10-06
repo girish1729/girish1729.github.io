@@ -31,7 +31,8 @@ resources are available on the Internet as well.
 This article discusses a possible solution to solving the NAT problem
 for P2P protocols.
 
-What Is Wrong with NAT?
+## What Is Wrong with NAT?
+
 NAT breaks the Internet more than it makes it. I may sound harsh here,
 but ask any peer-to-peer application developer, especially the VoIP
 folks, and they will tell you why.
@@ -88,7 +89,8 @@ Incidentally, voice traffic is better handled by UDP, so that suits us
 fine. Now that we have a fairly good idea of the problem we are trying
 to solve, let's get down to the solution.
 
-Anatomy of the Solution
+## Anatomy of the Solution
+
 The key to the NAT puzzle lies in the fact that in order for machines
 behind a NAT gateway to interact with the public Internet, NAT devices
 necessarily have to allow inbound traffic—that is, replies to requests
@@ -143,13 +145,13 @@ their levels of leniency when it comes to interpreting what they
 consider as reply to a request. There are different varieties of NAT
 behavior:
 
-Full cone NAT
+- Full cone NAT
 
-Restricted cone NAT
+- Restricted cone NAT
 
-Restricted port NAT
+- Restricted port NAT
 
-Symmetric NAT
+- Symmetric NAT
 
 I won't go into the details and definitions of these here, as there are
 numerous resources explaining them elsewhere. Symmetric NATs are the
@@ -161,7 +163,8 @@ to allow P2P protocols.
 First, how do we tell the private IP that we are interested in
 connecting to it at a particular instance?
 
-Implementation Details of the UDP Hole Punching Technique
+## Implementation Details of the UDP Hole Punching Technique
+
 This problem can be solved by joining the problem, rather than fighting
 it head on. In order to achieve peer-to-peer traffic across NATs, we
 have to modify our P2P mesh model slightly to make it a hybrid of a
@@ -317,8 +320,10 @@ situations, you need to think of implementing that as well.
 
 Now, for the Real Dope, the C Code for Achieving the above
 Due to their long length, the listings for this article are located on
-the Linux Journal FTP site at
-ftp.linuxjournal.com/pub/lj/listings/issue148/9004.tgz. I leave out
+the Linux Journal FTP site
+[here](ftp.linuxjournal.com/pub/lj/listings/issue148/9004.tgz). 
+
+I leave out
 unnecessary detail and glue code and focus purely on the nontrivial
 aspects of UDP hole punching.
 
@@ -334,7 +339,7 @@ works as good or even better than other NAT traversal mechanisms.
 
 First, take a look at the rendezvous code (Listing 1). Note that we use
 select() to serve multiple sockets. We could as well use kqueue() on
-*BSD, or better, use the libevent abstraction (see Resources). But, I
+BSD, or better, use the libevent abstraction (see Resources). But, I
 stuck to select() because performance doesn't matter so much to us. We
 talk to the mediator server only for establishing peer-to-peer
 connections, not otherwise.
@@ -359,7 +364,9 @@ You can see hole punching in action by using this simple command. At
 each end, type:
 
       
+```shell
       $ nc -u -p 17000 <peer public IP> 17000
+```
       
       
 With only the peer public IP different, you can start communicating if
@@ -368,16 +375,22 @@ port as the public port.
 
 If you want to test TCP hole punching, try this:
 
+```shell
          $nc -l -p 17000
+```
       
 at one end and this:
 
       
+```shell
       $nc -p 17000 <peer public IP> 17000
+```
       
       
 at the other end.
-Future Work
+
+## Future Work
+
 Rather than having one rendezvous server, you can have a few of them for
 failover and geographical distribution. However, if you are behind two
 levels of NAT, sometimes this may not work. You also could listen on
@@ -385,5 +398,6 @@ multiple virtual and real interfaces and attempt hole punching on all of
 them. You can add TCP hole punching on similar lines and try that first,
 and then attempt UDP hole punching.
 
-Resources for this article: /article/9072.
+
+[Back to LinuxJournal](/blog/linuxjournal)
 

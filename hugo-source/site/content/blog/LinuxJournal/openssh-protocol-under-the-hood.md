@@ -33,10 +33,10 @@ tunneling insecure protocols, such as POP3 or SMTP, through secure SSH
 tunnels. In addition, it can be used with some limitations to tunnel FTP
 securely.
 
-The OpenSSH Architecture
+## The OpenSSH Architecture
+
 Let's begin with the overall scheme of things.
 
-The OpenSSH Protocol under the Hood
 Figure 1. OpenSSH Architecture
 
 As shown in Figure 1, OpenSSH is composed of three key layers. The
@@ -44,15 +44,15 @@ bottom layer, ssh-transport, is the most critical component involved in
 all the crypto operations, such as key exchange, re-keying at intervals,
 protecting against attacks in various ways and so on.
 
-The layer on top of that, ssh-userauth, is responsible for
+The layer on top of that, `ssh-userauth`, is responsible for
 authenticating end users to the sshd dæmon that runs at the server end.
 Remember that SSH authenticates both ways. The client SSH program
 authenticates the sshd server dæmon using the ssh-transport protocol.
 After authentication, key exchange is completed, and a secure connection
 is established. Subsequent to that, user authentication takes place in
-the ssh-userauth layer.
+the `ssh-userauth` layer.
 
-ssh-userauth provides a lot of flexibility, because users can
+`ssh-userauth` provides a lot of flexibility, because users can
 authenticate to the server in various ways—from a private key on a smart
 card to simple user name/password authentication. Once it goes through,
 the ssh-connection layer establishes a secure channel, either for
@@ -91,16 +91,17 @@ Figure 2. OpenSSH Protocol Flow Diagram
 
 Here is a typical unencrypted SSH packet:
 
-byte      SSH_MSG_CHANNEL_REQUEST
-uint32    recipient channel
-string    "pty-req"
-boolean   want_reply
-string    TERM environment variable value (e.g., vt100)
-uint32    terminal width, characters (e.g., 80)
-uint32    terminal height, rows (e.g., 24)
-uint32    terminal width, pixels (e.g., 640)
-uint32    terminal height, pixels (e.g., 480)
-string    encoded terminal modes
+    byte      SSH_MSG_CHANNEL_REQUEST
+    uint32    recipient channel
+    string    "pty-req"
+    boolean   want_reply
+    string    TERM environment variable value (e.g., vt100)
+    uint32    terminal width, characters (e.g., 80)
+    uint32    terminal height, rows (e.g., 24)
+    uint32    terminal width, pixels (e.g., 640)
+    uint32    terminal height, pixels (e.g., 480)
+    string    encoded terminal modes
+
 Most fields are self-explanatory. The top two fields are always present
 in all messages. The payload packets (what the user types and the
 responses from the server) are all carried with the SSH_MSG_DATA message
@@ -126,31 +127,30 @@ wrapping around. Because the sequence number is hashed, it can be
 sequential, and attackers never can guess what input will lead to what
 hash.
 
-The OpenSSH Protocol under the Hood
 Figure 3. OpenSSH Packet Processing
 
 The key components of OpenSSH keys are:
 
-Hash: H.
-
-Shared secret: K.
-
-Session ID: session_id.
-
-SSH uses the above components to derive the following encryption vectors
-and keys:
-
-Client to server initialization vector.
-
-Server to client initialization vector.
-
-Client to server encryption key.
-
-Server to client encryption key.
-
-Client to server MAC key.
-
-Server to client MAC key.
+    Hash: H.
+    
+    Shared secret: K.
+    
+    Session ID: session_id.
+    
+    SSH uses the above components to derive the following encryption vectors
+    and keys:
+    
+    Client to server initialization vector.
+    
+    Server to client initialization vector.
+    
+    Client to server encryption key.
+    
+    Server to client encryption key.
+    
+    Client to server MAC key.
+    
+    Server to client MAC key.
 
 The equations used for deriving the above vectors and keys are taken
 from RFC 4253. In the following, the || symbol stands for concatenation,
@@ -158,17 +158,17 @@ K is encoded as mpint, “A” as byte and session_id as raw data. Any
 letter, such as the “A” (in quotation marks) means the single character
 A, or ASCII 65.
 
-Initial IV client to server: HASH(K || H || “A” || session_id).
-
-Initial IV server to client: HASH(K || H || “B” || session_id).
-
-Encryption key client to server: HASH(K || H || “C” || session_id).
-
-Encryption key server to client: HASH(K || H || “D” || session_id).
-
-Integrity key client to server: HASH(K || H || “E” || session_id).
-
-Integrity key server to client: HASH(K || H || “F” || session_id).
+    Initial IV client to server: HASH(K || H || “A” || session_id).
+    
+    Initial IV server to client: HASH(K || H || “B” || session_id).
+    
+    Encryption key client to server: HASH(K || H || “C” || session_id).
+    
+    Encryption key server to client: HASH(K || H || “D” || session_id).
+    
+    Integrity key client to server: HASH(K || H || “E” || session_id).
+    
+    Integrity key server to client: HASH(K || H || “F” || session_id).
 
 Simple, right?
 
@@ -181,13 +181,13 @@ The typical cipher algorithm used is AES or DES3 in CBC mode. The MAC is
 a combination of MD5 or the SHA1 hash algorithm with a secret key. There
 are four choices here:
 
-hmac-sha1
+- hmac-sha1
 
-hmac-md5
+- hmac-md5
 
-hmac-sha1-96
+- hmac-sha1-96
 
-hmac-md5-96
+- hmac-md5-96
 
 Actually, sha1 is a little weak in today's world, because collision
 attacks are possible. The zeitgeist in hashing today is sha512, but with
@@ -221,7 +221,7 @@ man-in-the-middle attacks.
 
 Here is the equation for deriving H:
 
-H = hash(V_C || V_S || I_C || I_S || K_S || e || f || K)
+    H = hash(V_C || V_S || I_C || I_S || K_S || e || f || K)
 
 hash is usually the SHA1 hash algorithm.
 
@@ -233,11 +233,11 @@ exchanged.
 Now, we are left with computing e, f and K; e and f are the DH
 parameters used for exponentiation:
 
-e = gx modulo p
-
-f = gy modulo p
-
-K = ey modulo p
+   e = gx modulo p
+   
+   f = gy modulo p
+   
+   K = ey modulo p
 
 Here, p is a prime number from the DH generator field. And, x and y are
 chosen arbitrarily by client and server. Remember that DH works using
@@ -251,10 +251,10 @@ server RSA/DSA key, but because we add a random cookie in our
 calculations, it's difficult for attackers to break SSH
 cryptographically.
 
-Description of Each Component
+## Description of Each Component
+
 Let's take a look at the OpenSSH family before we proceed.
 
-The OpenSSH Protocol under the Hood
 Figure 4. Stars in the OpenSSH Galaxy
 
 As you can see in Figure 4, there are many executables and players in
@@ -263,10 +263,10 @@ Everything I discussed above is actually implemented by SSH and sshd
 components (client and server, respectively). The other components are
 used rarely for key generation, agent forwarding and so on.
 
-sftp-server is the subsystem for SSH. This is an FTP-like protocol, but
+`sftp-server` is the subsystem for SSH. This is an FTP-like protocol, but
 it is highly secure and efficient, unlike the broken FTP protocol.
 
-scp is a marvelously popular and convenient file transfer mechanism
+`scp` is a marvelously popular and convenient file transfer mechanism
 built on top of the SSH infrastructure. Because integrity protection is
 built in to the SSH wire protocol, file integrity is guaranteed.
 However, it does not have a resume feature for broken transfers, so you
@@ -296,15 +296,17 @@ list. Efforts are underway to make this more secure and easier. If this
 is not ensured, different types of man-in-the-middle attacks are
 possible.
 
-Resources
+## Resources
 
-OpenSSH: www.openssh.org
+* [OpenSSH](https://www.openssh.org)
 
-SSH Protocol Architecture: www.ietf.org/rfc4251.txt
+* [SSH Protocol Architecture](https://www.ietf.org/rfc4251.txt)
 
-ssh-userauth: www.ietf.org/rfc4252.txt
+* [ssh-userauth](https://www.ietf.org/rfc4252.txt)
 
-ssh-transport: www.ietf.org/rfc4253.txt
+* [ssh-transport](https://www.ietf.org/rfc4253.txt)
 
-ssh-connect: www.ietf.org/rfc4254.txt
+* [ssh-connect](https://www.ietf.org/rfc4254.txt)
+
+[Back to LinuxJournal](/blog/linuxjournal)
 

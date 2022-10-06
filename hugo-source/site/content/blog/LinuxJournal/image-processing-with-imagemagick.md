@@ -247,3 +247,4 @@ Resources
 
 Girish Venkatachalam is a cryptographer with nearly a decade of experience working on various modern UNIX systems. He has developed IPSec from scratch on the Nucleus OS for a router and worked with the guts of Apache, OpenSSL and SSH. He can be reached at girish1729@gmail.com.
 
+[Back to LinuxJournal](/blog/linuxjournal)

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>  <head>
+    <meta charset="utf-8" />
+    <title>Multimedia dynamite</title>
+
+    <!--Meta For No Index-->
+    <meta name="robots" content="noindex, Nofollow, Noimageindex">
+
+    <!--mobile responsive meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="generator" content="Hugo 0.95.0" />
+    <!-- Critical CSS -->
+    
+    <link href="https://girish1729.github.io/scss/critical.min.css" rel="stylesheet" />
+  
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://girish1729.github.io/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://girish1729.github.io/images/favicon.png" type="image/x-icon" />
+
+    
+
+    
+  </head>
+
+<body>
+<header class="header">
+  <nav class="main-nav navbar navbar-expand-lg main-nav-colored">
+    <div class="container-fluid">
+      <a href="https://girish1729.github.io" class="navbar-brand">
+        <img src="https://girish1729.github.io/images/logo.png" alt="site-logo" />
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div
+        class="collapse navbar-collapse nav-list"
+        id="mainNav"
+      >
+        <ul class="navbar-nav ml-auto">
+          
+          
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io/start-here">Start Here</a>
+          </li>
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io/blog/">Blog</a>
+          </li>
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io#faq">FAQ</a>
+          </li>
+          
+          <li class="nav-item ">
+             <a class="nav-link scroll-to" href="https://girish1729.github.io/contact/">Contact</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div id="content">
+<article class="post">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="post-title">
+          <h2>Multimedia dynamite</h2>
+        </div>
+        <div class="post-meta">
+          <p><span>November 28, 2018</span> in 
+            
+          </p>
+        </div>
+        <div class="post-image">
+          <img src="https://girish1729.github.io/images/blog/multimedia.webp" alt="feature-image">
+        </div>
+        <div class="post-body">
+          <h1 id="multimedia-dynamite">Multimedia Dynamite</h1>
+<p>Audio/Video
+by Girish Venkatachalam on October 1, 2007</p>
+<p>What should the Linux movie player of your dreams do? It should play any
+movie/video that you throw at it. No questions asked—just play. It
+should allow seeking and volume control with the keyboard and mouse. It
+should work with an infrared remote controller and also play television.
+It should play DVDs and VCDs too. MPlayer can do all of this and much,
+much more.</p>
+<p>MPlayer also is an award-winning, mature, open-source program that still
+is actively in development. Perhaps one day in the not-too-distant
+future, support for DVD menus, color subtitles, picture in picture
+video, MIDI and audio effects plugins like the ones for SoX will be
+added.</p>
+<p>MPlayer is admirably stable for the job it does. However, it does crash
+under certain circumstances, such as with certain video drivers.</p>
+<p>It is a mature application that has no parallel. MEncoder, its companion
+video encoder program, does a much better job than FFMPEG in transcoding
+videos, although it is a bit difficult to use and learn.</p>
+<p>Now, let&rsquo;s take a look at MPlayer&rsquo;s magic. The following command plays a
+stream URL after resampling it to 48,000Hz and combining channels into
+left-right stereo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -af lavcresample<span style="color:#f92672">=</span>48000,hrtf 
+</span></span><span style="display:flex;"><span> ↪<span style="color:#e6db74">&#39;http://mp3.streampower.be/radio1-mid.mp3&#39;</span>
+</span></span></code></pre></div><p>The following command grabs the same URL stream and dumps it to a file
+named stream.aac:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -dumpstream -dumpfile stream.aac 
+</span></span><span style="display:flex;"><span> ↪-softvol -softvol-max <span style="color:#ae81ff">2000</span> -af 
+</span></span><span style="display:flex;"><span> ↪lavcresample<span style="color:#f92672">=</span>48000,volnorm<span style="color:#f92672">=</span>2:0.5 
+</span></span><span style="display:flex;"><span> ↪<span style="color:#e6db74">&#39;http://mp3.streampower.be/radio1-mid.mp3&#39;</span> 
+</span></span></code></pre></div><p>You can open the stream file from another terminal window with this
+command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer stream.aac
+</span></span></code></pre></div><p>Then what happens? The first instance of MPlayer continues to dump the
+network stream to a file and the second plays it for you—time-shifted
+Internet radio. Cool, eh?</p>
+<p>Most of the switches are not necessary to accomplish this, but they show
+MPlayer&rsquo;s ability to use the Linux command line so elegantly. The
+-softvol and -softvol-max switches invoke the software volume control
+feature of MPlayer. It reduces the signal-to-noise ratio, but it can
+amplify the signal to very high levels.</p>
+<p>The volnorm=2:0.5 filter invokes the volume normalization audio filter.
+The first argument, 2, specifies that several samples are to be used to
+smooth the volume variations. The 0.5 sets the maximum amplitude to
+which you want the volume normalized. As you can see, MPlayer provides a
+high level of customization.</p>
+<p>The other options on the command line should not be difficult to
+decipher.</p>
+<p>Playlists
+The following is a command similar to the first one above. In this case,
+however, you specify a playlist URL. Unlike the above command, this one
+may not work for you, depending on whether the file happens to be
+available from the SHOUTcast site when you try it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -af lavcresample<span style="color:#f92672">=</span>48000,hrtf -playlist 
+</span></span><span style="display:flex;"><span> ↪<span style="color:#e6db74">&#39;http://www.shoutcast.com/sbin/shoutcast-playlist.pls?rn
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">↪=1025&amp;file=filename.pls&#39;</span>
+</span></span></code></pre></div><p>The -playlist option is used only with stream URLs that have a .pls
+extension in the stream.</p>
+<p>You can create your own playlists in a variety of ways. Here is one way
+to do it with the find command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ find /home/girish/music -name <span style="color:#e6db74">&#34;*mp3 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> ↪-or -name &#34;</span>*ogg<span style="color:#e6db74">&#34; &gt; ~/playlist.txt
+</span></span></span></code></pre></div><p>Now, fire up MPlayer with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -playlist ~/playlist.txt
+</span></span></code></pre></div><p>The following variant shuffles the list and plays songs in random order
+without repeating songs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -shuffle -playlist ~/playlist.txt
+</span></span></code></pre></div><p>Naturally, MPlayer is a media player. You don&rsquo;t have to limit yourself
+to audio files. You could add any MPlayer-playable media file into the
+mix, including videos, movies, television, radio and, of course,
+Internet streams.</p>
+<p>In addition to this simple line-based playlist format, MPlayer also has
+excellent support for ASX, M3U and other popular playlist formats.</p>
+<h2 id="special-effects">Special Effects</h2>
+<p>There is good support for audio effects, and the karaoke effect
+especially gets interesting with certain songs. It is not perfect, but
+you can attenuate the voice in a song a great deal. Use the following
+command to activate karaoke mode:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -af karaoke song.mp3
+</span></span></code></pre></div><p>MPlayer also has a ten-octave band equalizer. The following command
+ignores the middle frequency bands and amplifies the frequencies around
+31.25Hz by 7dB, 62.5Hz by 8dB, 125Hz by 5dB and all of the frequencies
+around 4, 8 and 16Hz are attenuated by 2dB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -af equalizer<span style="color:#f92672">=</span>7:8:5:0:0:0:-2:-2:-2 video.mpg
+</span></span></code></pre></div><p>The following command gives a live effect to playback. Try it with songs
+that sound monotonous:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -af extrastereo song.mp3
+</span></span></code></pre></div><p>You can issue a command like the following to play the third song five
+times:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer song1.mp3 song2.ogg file.wav -loop <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>If you want to repeat the whole list five times, type the following
+instead:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer <span style="color:#f92672">{</span> song1.mp3 song2.ogg file.wav <span style="color:#f92672">}</span> -loop <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>You also can use -loop 0 to play something over and over again.</p>
+<p>Additionally, there are many audio effect plugins designed especially
+for multichannel and 3-D audio. If you want some really advanced audio
+effects, try the SoX Swiss Army knife. It is another command-line
+application that excels in professional audio effects.</p>
+<p>You can specify multiple audio filters on the command line and they are
+applied one after another in a chain.</p>
+<p>Figure 1. MPlayer Audio/Video Filter Chaining</p>
+<p>What if you like a certain audio filter chain and you want to save the
+resulting audio to a file? The following command saves the output of
+filtering to the file named filtered.wav rather than playing it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -ao pcm:file<span style="color:#f92672">=</span>filtered.wav -channels <span style="color:#ae81ff">4</span> -af
+</span></span><span style="display:flex;"><span>lavcresample<span style="color:#f92672">=</span>48000,hrtf,pan<span style="color:#f92672">=</span>2:1:0:0:0.3:0.5:0.5:0:12 audio.ogg
+</span></span></code></pre></div><p>The lavcresample filter resamples the frequency of audio.ogg to
+48,000Hz.</p>
+<p>The pan filter is a very powerful and sophisticated filter. It mixes the
+input audio channels into the specified output channels in various
+amplitudes.</p>
+<p>In this example, we use the -channels switch to specify four input
+channels. The first argument to pan is 2 to specify two output channels.
+In the first pair of arguments after that, the 1:0 specifies the
+amplitude of the first input channel that is fed into the two output
+channels. It goes into the left channel with an amplification factor of</p>
+<ol>
+<li>The second input channel goes into the right channel with an
+amplification factor of 0.3 (0:0.3), and the third input channel is
+divided equally into both output channels (0.5:0.5). The fourth channel
+goes into the right channel with an amplification factor of 12.</li>
+</ol>
+<p>You can use the following command to re-encode the WAV file to Ogg:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ oggenc -q <span style="color:#ae81ff">9</span> filtered.wav 
+</span></span></code></pre></div><h2 id="the-command-subsystem">The Command Subsystem</h2>
+<p>MPlayer has a very rich input command processing subsystem that can be
+manipulated with the keyboard, mouse, joystick or LIRC remote control.
+You also can customize several keyboard keys to invoke MPlayer&rsquo;s
+controls.</p>
+<p>The following provides the list of keys that can be configured. The
+defaults are very sensible, and you may not need to change them:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -input keylist
+</span></span></code></pre></div><p>You also can find MPlayer&rsquo;s controls for seeking, volume control,
+brightness correction and other things with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -input cmdlist
+</span></span></code></pre></div><p>The slave.txt file that comes with MPlayer&rsquo;s documentation explains how
+to customize the input.conf and menu.conf files that come with the
+MPlayer package in your Linux distribution.</p>
+<p>You also can have MPlayer accept input commands from a FIFO file (FIFO
+stands for First In, First Out). This comes in handy when it is reading
+the media from the standard input:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mkfifo /tmp/fifo
+</span></span><span style="display:flex;"><span>$ cat playlist.txt | mplayer -input 
+</span></span><span style="display:flex;"><span> ↪file:/tmp/fifo -cache <span style="color:#ae81ff">8192</span> -playlist -
+</span></span></code></pre></div><p>Typing the following mutes and executes it again with the audio unmuted:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#39;mute&#39;</span> &gt; /tmp/fifo
+</span></span></code></pre></div><p>You can use the mouse for the usual seek operations. The mouse wheel is
+configured by default to seek files in both directions.</p>
+<h2 id="on-screen-display">On-Screen Display</h2>
+<p>Apropos of input methods, MPlayer has excellent support for on-screen
+display (OSD). I normally use only the superb scalable TTF fonts. These
+are not available on the MPlayer Web site.</p>
+<p>The following command displays a timer:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -osdlevel <span style="color:#ae81ff">3</span> -font 
+</span></span><span style="display:flex;"><span> ↪/home/girish/.ttffonts/Comicbd.ttf video.avi
+</span></span></code></pre></div><p>See Figure 2 for a sample of this display.</p>
+<p>Figure 2. MPlayer with Basic OSD Support</p>
+<p>You can create a custom menu to browse using the keyboard with the OSD
+facility. It even has a console where you can enter MPlayer slave
+commands.</p>
+<p>Figure 3. MPlayer OSD Menu</p>
+<p>Figure 4. MPlayer Built-in Console</p>
+<p>Figure 5. MPlayer with OSD of Media File Information</p>
+<p>As you can see, the scalability of the OSD fonts does not break with the
+video scale filter.</p>
+<p>Here is how to create this kind of configuration. First, set up most
+everything in the config file. Here is my ~/.mplayer/config file:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">
+# Write your default config options here!
+# Use Matrox driver by default.
+vo=sdl
+font=/home/girish/.ttffonts/comicbd.ttf
+vf=hue,eq,screenshot
+#menu-startup=yes
+menu=yes
+subfont-autoscale=3
+subfont-osd-scale=8
+subfont-text-scale=8
+subpos=50
+spuaa=4
+osdlevel=3
+# I love doing headstand (Sirsasana) while watching videos.
+#flip=yes
+# Decode/encode multiple files from PNG,
+# start with mf://filemask
+mf=type=png:fps=25
+# Eerie negative images are cool.
+#vf=eq2=1.0:-0.8
+The input configuration and menu configuration are stored separately in
+input.conf and menu.conf, respectively. The menu.conf file needs to have
+a section that looks something like this:
+
+&lt;cmdlist name=&#34;main&#34; title=&#34;MPlayer OSD menu&#34; ptr=&#34;&lt;&gt;&#34; &gt;
+     &lt;e name=&#34;Pause&#34; ok=&#34;pause&#34;/&gt;
+     &lt;e name=&#34;Prev/Next&#34; ok=&#34;pt_step 1&#34; cancel=&#34;pt_step -1&#34;/&gt;
+     &lt;e name=&#34;Jump to ...&#34; ok=&#34;set_menu jump_to&#34;/&gt;
+     &lt;e name=&#34;Open ...&#34; ok=&#34;set_menu open_file&#34;/&gt;
+     &lt;e name=&#34;Open playlist ...&#34; ok=&#34;set_menu open_list&#34;/&gt;
+     &lt;e name=&#34;Help&#34; ok=&#34;set_menu man&#34;/&gt;
+     &lt;e name=&#34;Pref&#34; ok=&#34;set_menu pref_main&#34;/&gt;
+     &lt;e name=&#34;Properties&#34; ok=&#34;set_menu properties&#34;/&gt;
+     &lt;e name=&#34;Console&#34; ok=&#34;set_menu console0&#34;/&gt;
+     &lt;e name=&#34;Quit&#34; ok=&#34;quit&#34;/&gt;
+&lt;/cmdlist&gt;
+</code></pre><p>You need this line in input.conf in order to tell MPlayer what event
+invokes the menu. The setting here invokes the menu if you click the
+left-mouse button:</p>
+<p>MOUSE_BTN0 menu main</p>
+<h2 id="custom-subtitles">Custom Subtitles</h2>
+<p>Not surprisingly, MPlayer understands close to 12 subtitle formats, and
+it has its own MPSub format too. The options for subtitle display are
+the richest I have seen. You can display subtitles in any size, any
+position on the video, move them dynamically with the keyboard, adjust
+the delay, change the transparency, format them into multiple lines and
+so on.</p>
+<p>Here is the most basic usage of the file subtitles.txt:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">FORMAT=TIME
+# first number  : wait this much after 
+# previous subtitle disappeared
+# second number : display the current 
+# subtitle for this many seconds
+
+2 3
+What is going on?
+
+4 3
+How are you doing?
+
+8 3
+You are wrong!
+
+0 3
+A long long, time ago...
+in a galaxy far away...
+
+0 3
+Naboo was under an attack.
+
+0 200
+I don&#39;t understand this.
+</code></pre><p>Tell MPlayer to use this file with a command like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -sub subtitles.txt 
+</span></span><span style="display:flex;"><span> ↪-font ~/.ttffonts/Verdana.ttf video.avi
+</span></span></code></pre></div><p>This next command dumps the subtitles file into the srt format into the
+file dumpsrt.sub in the current directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -sub subtitles.txt video.avi -dumpsrtsub
+</span></span></code></pre></div><p>You can take a quick look at all subtitles in the file by pressing the Y
+and G keys. Of course, you can specify multiple subtitle files, and you
+can switch between them.</p>
+<h2 id="create-screenshots">Create Screenshots</h2>
+<p>Want to take screenshots with MPlayer? It&rsquo;s easy. Here&rsquo;s a sample
+command to use when you start to play a video:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -vf screenshot video.avi
+</span></span></code></pre></div><p>Press <code>S key</code> when you want to take a screenshot. If you want a screenshot
+every five seconds, try the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -vo png -vf screenshot -sstep <span style="color:#ae81ff">5</span> video.avi
+</span></span></code></pre></div><p>What if you want to take a screenshot of every frame? Set MPlayer to
+accept slave commands with a FIFO, and type these commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mkfifo /tmp/fifo
+</span></span><span style="display:flex;"><span>$ mplayer -input file:/tmp/fifo video.mpg
+</span></span><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#39;screenshot 1&#39;</span> &gt; /tmp/fifo
+</span></span></code></pre></div><p>Toggle the screenshot process with the following command while the video
+is playing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#39;screenshot 1&#39;</span> &gt; /tmp/fifo
+</span></span></code></pre></div><p>You might want to use the -vf spp,scale=1024:768 switch to get
+full-screen screenshots.</p>
+<h2 id="even-more-power">Even More Power</h2>
+<p>There&rsquo;s much more MPlayer can do. You can encode image files into a
+video and extract frames into image files with MPlayer. You also can
+watch analog television with the tv:// option and watch DVB channels
+with the dvb:// option. It supports a wide variety of streaming
+protocols, including RTP, RTSP, MMS, SDP and LIVE5555 streaming.</p>
+<p>Discover the Power Yourself</p>
+<p>The following command lists the available filters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -af help
+</span></span></code></pre></div><p>The man page and MPlayer&rsquo;s HTML documentation have more thorough
+descriptions of its options. Typing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -vo help
+</span></span></code></pre></div><p>lists the compiled video output drivers.</p>
+<p>You can play an arbitrary audio file with the video using:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer video.mpg -audiofile audio.aac
+</span></span></code></pre></div><p>Of course, MPlayer can play a wide variety of audio and video media
+files. The following commands list them:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mplayer -vo help
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ mplayer -ao help
+</span></span></code></pre></div><p>Try using the -audio-demuxer switch along with -rawaudio.</p>
+<p>I hope this gets you started in discovering the awesome power of
+MPlayer. Enjoy your multimedia experience!</p>
+<p>Resources</p>
+<ul>
+<li>
+<p><a href="https://mplayerhq.hu">MPlayer</a></p>
+</li>
+<li>
+<p><a href="https://www.mplayerhq.hu/DOCS/HTML-single/en/MPlayer.html">MPlayer HTML Documentation</a></p>
+</li>
+<li>
+<p><a href="https://freshmeat.net/articles/view/747">MPlayer Tips</a></p>
+</li>
+<li>
+<p><a href="https://sox.sourceforge.net">SoX</a></p>
+</li>
+</ul>
+<p>Girish Venkatachalam is an open-source hacker deeply interested in UNIX.
+In his free time, he likes to cook vegetarian dishes and actually eat
+them. He can be contacted at <a href="mailto:girish1729@gmail.com">girish1729@gmail.com</a>.</p>
+<p><a href="/blog/linuxjournal">Back to LinuxJournal</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div><section class="footer">
+  <div class="container">
+
+    <div class="row justify-content-between">
+        <div class="footer-logo">
+          A digital nomad
+        </div>
+    </div>
+
+<hr/>
+    <div class="row justify-content-between">
+
+<script type="text/javascript"
+src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="girish1729" data-color="#FFDD00" data-emoji=""  data-font="Arial" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
+<a href="https://twitter.com/girish1729?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @girish1729</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+   </div>
+
+   <div class="footer-copyright-text">
+          <p> © 2022 <a href="https://girish1729.github.io/" target="_blank">Girish Venkatachalam</a> </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Non Critical CSS -->
+
+<link href="https://girish1729.github.io/scss/non-critical.min.css" rel="stylesheet" />
+<script src="https://maps.googleapis.com/maps/api/js?key=&libraries=geometry">
+</script>
+<!-- VENDOR JS -->
+<script src="https://girish1729.github.io/vendor/jQuery/jquery.min.js"></script>
+<script src="https://girish1729.github.io/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="https://girish1729.github.io/vendor/slick/slick.min.js"></script>
+<script src="https://girish1729.github.io/vendor/aos/aos.js"></script>
+<script src="https://girish1729.github.io/vendor/match-height/match-height.js"></script>
+<script src="https://girish1729.github.io/vendor/magnific-popup/magnific-popup.min.js"></script>
+<script src="https://girish1729.github.io/vendor/g-map/gmap.js"></script>
+
+ 
+<script src="https://girish1729.github.io/js/script.min.js"></script>
+
+
+</body>
+</html>

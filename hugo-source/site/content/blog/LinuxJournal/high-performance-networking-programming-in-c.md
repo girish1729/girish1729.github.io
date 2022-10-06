@@ -38,7 +38,8 @@ and flow control for us. Of course, we no longer have to worry about
 reliability either. If you are interested in performance and high-volume
 traffic, you will arrive at TCP anyway.
 
-What Is Bandwidth?
+## What Is Bandwidth?
+
 Once we answer that question, we can ask ourselves another useful
 question, “How can we get the best out of the available bandwidth?”
 
@@ -59,7 +60,8 @@ with other nodes on the network. There is no concept of dedicated
 bandwidth in the LAN environment where your product is most likely to
 reside. This is something we can control with a bit of programming.
 
-Non-Blocking TCP
+## Non-Blocking TCP
+
 Here's one way to maximize throughput if the bottleneck is your local
 LAN (this might also be the case in certain crowded ADSL deployments).
 Simply use multiple TCP connections. That way, you can ensure that you
@@ -179,7 +181,8 @@ the user process differently in the case of blocking and non-blocking
 I/O. When you block, the process “sleeps”, which leads to a context
 switch. When you use non-blocking sockets, this problem is avoided.
 
-Scatter/Gather I/O
+## Scatter/Gather I/O
+
 The other interesting technique is scatter/gather I/O or using readv(2)
 and writev(2) for network and/or disk I/O.
 
@@ -229,7 +232,6 @@ When you combine scatter/gather I/O with non-blocking sockets, things
 get a little complex, as shown in Figure 1. The code for tackling this
 hairy issue is shown in Listing 3.
 
-High-Performance Networking Programming in C
 Figure 1. Possibilities in Non-Blocking Write with Scatter/Gather I/O
 
 Listing 3. nonblockuio.c
@@ -281,7 +283,8 @@ A partial write of any buffer can occur, or you can get any combination
 of a few full writes and few partial writes. Therefore, the while loop
 has to take care of all such possible combinations.
 
-mmap(2) Disk I/O
+## mmap(2) Disk I/O
+
 Network programming is not all about sockets, however. We still haven't
 solved the problem of having to use hard disks, which are mechanical
 devices and consequently are much slower than main memory and even the
@@ -299,7 +302,10 @@ $ hdparm -rT /dev/sda (/dev/hda if IDE)
 Check whether you are getting good throughput. If not, enable DMA and
 other safe options using this command:
 
+```shell
 $ hdparm -d 1 -A 1 -m 16 -u 1 -a 64 /dev/sda
+```
+
 We also need to be able to avoid redundant copies and other
 time-consuming CPU operations to squeeze the maximum bandwidth from the
 network. A very effective tool for achieving that is the versatile
@@ -421,7 +427,8 @@ redundant copies, as bits are passed between the file descriptor and
 socket descriptor directly. Be aware that this approach is not portable
 across UNIX.
 
-Advanced Techniques in Application Design
+## Advanced Techniques in Application Design
+
 Applications should be well designed to take full advantage of network
 resources. First and foremost, using multiple short-lived TCP
 connections between the same two endpoints for sequential processing is
@@ -445,7 +452,7 @@ You can make excellent use of available bandwidth by doing things in
 parallel—by not waiting for processing to complete before reading the
 next packet off the network. Figure 2 illustrates what I mean.
 
-High-Performance Networking Programming in C
+
 Figure 2. Pipelining
 
 Pipelining is a powerful technique employed in CPUs to speed up the
@@ -470,7 +477,8 @@ not report improved performance, don't do it. Also, make sure your test
 cases take care of LAN, WAN and, if necessary, satellite and wireless
 environments.
 
-A Few Words on TCP
+## A Few Words on TCP
+
 TCP has been a field of intense research for decades. It's an extremely
 complex protocol with a heavy responsibility on the Internet. We often
 forget that TCP is what holds the Internet together without collapse due
@@ -498,7 +506,8 @@ have a very high-speed network.
 But, all else being equal, the above techniques are few of the most
 useful methods for achieving good performance for your applications.
 
-Conclusion
+## Conclusion
+
 Gunning for very high performance is not something to be taken lightly.
 It's dependent on heuristics and empirical data as well as proven
 techniques. As I mentioned previously, it is an art best perfected by
@@ -520,3 +529,4 @@ Troubleshooting](https://www.onlamp.com/pub/a/onlamp/2006/11/17/tcp_tuning.html)
 
 - [TCP and Congestion Control Slides](https://www.nishida.org/soi1/mgp00001.html)
 
+[Back to LinuxJournal](/blog/linuxjournal)
