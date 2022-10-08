@@ -26,7 +26,7 @@ enableEmoji = true
 [params]
   contactLink = "contact"
   description = "Personal page of Girish Venkatachalam - software developer"
-  images = "images/hero/hero-bg.webp"
+  images = ["images/hero/hero-bg.webp"]
   title =  "Personal page of Girish Venkatachalam - software developer"
   copyright = "© {year} <a href=\"https://girish1729.github.io/\" target=\"_blank\">Girish Venkatachalam</a>"
   logo = "images/logo.png"
