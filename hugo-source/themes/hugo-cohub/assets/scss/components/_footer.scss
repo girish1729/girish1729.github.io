@@ -150,3 +150,11 @@
     color: $primary-color;
   }
 }
+
+#footermenu li {
+	list-style: none;
+	display: inline;
+	padding-right: 60px;
+	font-size: 18px;
+}
+
