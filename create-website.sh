@@ -5,6 +5,7 @@ if [ "$*" = "" ]; then
 	exit
 fi
 cd hugo-source
+rm -rf resources
 hugo --gc --minify --destination ../..
 cd ..
 git add *
