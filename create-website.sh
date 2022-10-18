@@ -7,7 +7,7 @@ fi
 set -x
 cd hugo-source
 rm -rf resources
-hugo --gc --minify --destination ../..
+hugo --gc --minify --destination ..
 cd ..
 git add *
 git commit -m "$*" -a
